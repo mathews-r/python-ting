@@ -5,6 +5,9 @@ import pytest
 def test_basic_priority_queueing():
     queue = PriorityQueue()
 
+    with pytest.raises(IndexError, match="Índice Inválido ou Inexistente"):
+        queue.search(50)
+
     priority = {
         "nome_do_arquivo": "teste.txt",
         "qtd_linhas": 3,
@@ -40,6 +43,3 @@ def test_basic_priority_queueing():
 
     item3 = queue.search(0)
     assert item3["qtd_linhas"] == 6
-
-    with pytest.raises(IndexError, match="Índice Inválido ou Inexistente"):
-        queue.search(50)
